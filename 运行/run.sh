@@ -2,10 +2,10 @@
 COMMOND=pmemd.cuda
 COM=
 ################################################################################
-# 3¡¢ÔËĞĞÄ£Äâ
+# 3ã€è¿è¡Œæ¨¡æ‹Ÿ
 ################################################################################
-echo 'ÕıÔÚ½øĞĞÄÜÁ¿×îĞ¡»¯...'
-# 3.1 ÄÜÁ¿×îĞ¡»¯
+echo 'æ­£åœ¨è¿›è¡Œèƒ½é‡æœ€å°åŒ–...'
+# 3.1 èƒ½é‡æœ€å°åŒ–
 echo "Minimize
 &cntrl
  imin=1,maxcyc=2000,ncyc=1000,
@@ -17,8 +17,8 @@ echo "Minimize
 
 $COMMOND -O -i mini.in -o mini.out -p $COM.prmtop -c $COM.inpcrd -r ${COM}_mini.rst -ref $COM.inpcrd -x mini.nc
 
-echo 'ÕıÔÚ¼ÓÈÈ...'
-# 3.2 NVT(Éı¸ßÎÂ¶È)
+echo 'æ­£åœ¨åŠ çƒ­...'
+# 3.2 NVT(å‡é«˜æ¸©åº¦)
 echo "Heat
 &cntrl
  imin=0,irest=0,ntx=1,
@@ -40,8 +40,8 @@ echo "Heat
 
 $COMMOND -O -i heat.in -o heat.out -p $COM.prmtop -c ${COM}_mini.rst -r ${COM}_heat.rst -ref ${COM}_mini.rst
 
-echo 'Ô¤Æ½ºâ...'
-#3.3 Ô¤Æ½ºâ
+echo 'é¢„å¹³è¡¡...'
+#3.3 é¢„å¹³è¡¡
 echo "Production
 &cntrl
  imin=0,irest=1,ntx=5,
@@ -57,8 +57,8 @@ echo "Production
 
 $COMMOND -O -i eq.in -o eq.out -p $COM.prmtop -c ${COM}_heat.rst -r ${COM}_eq.rst -ref ${COM}_heat.rst
 
-echo '³ÉÆ·Ä£Äâ...'
-# 3.4 ³ÉÆ·Ä£Äâ(×îºÃ·Ö²½Ä£Äâ)
+echo 'æˆå“æ¨¡æ‹Ÿ...'
+# 3.4 æˆå“æ¨¡æ‹Ÿ(æœ€å¥½åˆ†æ­¥æ¨¡æ‹Ÿ)
 echo "Production
 &cntrl
  imin=0,irest=1,ntx=5,
@@ -78,6 +78,6 @@ $COMMOND -O -i md.in -o md3.out -p $COM.prmtop -c ${COM}_md_2.rst -r ${COM}_md_3
 $COMMOND -O -i md.in -o md4.out -p $COM.prmtop -c ${COM}_md_3.rst -r ${COM}_md_4.rst -x md_4.nc -inf mdinfo_4
 $COMMOND -O -i md.in -o md5.out -p $COM.prmtop -c ${COM}_md_4.rst -r ${COM}_md_5.rst -x md_5.nc -inf mdinfo_5
 
-echo 'Íê³ÉÄ£Äâ'
+echo 'å®Œæˆæ¨¡æ‹Ÿ'
 
 rm -f *.in *.out *.rst
